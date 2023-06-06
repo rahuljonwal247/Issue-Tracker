@@ -115,6 +115,6 @@ module.exports.addAnIssue = async (req, res) => {
     const issue = req.body;
     const bugId = req.params.id;
     const collection = await mongoDB();
-    await collection.findOneAndUpdate({ _id: ObjectId(bugId) }, { '$push': { bugs: issue } });
+    await collection.findOneAndUpdate({ _id: new ObjectId(bugId) }, { '$push': { bugs: issue } });
     res.redirect('/issueTracker/projectDetails')
 }
